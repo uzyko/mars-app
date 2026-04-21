@@ -1,6 +1,9 @@
 package com.example.marsphotos.fake
 
 import com.example.marsphotos.data.NetworkMarsPhotosRepository
+import org.junit.Test
+import org.junit.Assert.assertEquals
+import kotlinx.coroutines.test.runTest
 
 class NetworkMarsRepositoryTest {
     @Test
