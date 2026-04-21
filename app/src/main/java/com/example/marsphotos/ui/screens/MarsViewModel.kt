@@ -22,6 +22,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.APPLICATION_KEY
 import androidx.lifecycle.viewModelScope
+import com.example.marsphotos.data.NetworkMarsPhotosRepository
 import com.example.marsphotos.model.MarsPhoto
 import com.example.marsphotos.network.MarsApi
 import kotlinx.coroutines.launch
@@ -57,6 +58,7 @@ class MarsViewModel : ViewModel() {
         viewModelScope.launch {
             marsUiState = MarsUiState.Loading
             marsUiState = try {
+                val marsPhotosRepository = NetworkMarsPhotosRepository()
                 val listResult = marsPhotosRepository.getMarsPhotos()
                 MarsUiState.Success(
                     "Success: ${listResult.size} Mars photos retrieved"
